@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Hades.Controllers
+namespace Hades.Features.Home
 {
 	public class HomeController : Controller
 	{
