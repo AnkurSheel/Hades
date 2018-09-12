@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"build": "webpack --mode development --progress"
+		"build": "webpack --mode development --progress",
+		"prod": "rimraf ../wwwroot/dist && webpack --mode production --progress"
 	},
 	"devDependencies": {
 		"aspnet-webpack": "^3.0.0",
