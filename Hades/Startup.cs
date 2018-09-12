@@ -1,9 +1,10 @@
-﻿using Hades.Infrastructure;
+﻿using System.IO;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -38,6 +39,12 @@ namespace Hades
 		{
 			if (env.IsDevelopment())
 			{
+				app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+				{
+					ProjectPath = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp"),
+					HotModuleReplacement = true
+				});
+
 				app.UseDeveloperExceptionPage();
 			}
 			else
