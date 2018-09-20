@@ -9,7 +9,8 @@ module.exports = (env = {}, argv = {}) => {
         mode: argv.mode || 'development', // we default to development when no 'mode' arg is passed
         entry: {
             main: './js/main.js',
-            index: './js/index.tsx'
+            index: './js/index.tsx',
+            applicationList: './js/applicationList.tsx'
         },
         output: {
             filename: '[name].js',
