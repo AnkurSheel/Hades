@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Job Applications List";
+}
+
+
+@section scripts {
+    <environment names="Development">
+        <script src="~/dist/applicationList.js"></script>
+    </environment>
+    <environment names="Staging, Production">
+        <script src="~/dist/applicationList.js" asp-append-version="true"></script>
+    </environment>
+}

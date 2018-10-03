@@ -1,3 +1,8 @@
 ﻿body {
-	background-color: #cdf;
+    background-color: #cdf;
+}
+
+.columns {
+    width: 33.33%;
+    float: left;
 }
