@@ -19,7 +19,7 @@
     width: 100%;
 }
 
-.card.content {
+.card .content {
     height: 100%;
     position: relative;
     transform-origin: center right;
@@ -35,4 +35,11 @@
     width: 100%;
 }
 
-.card .face.back { transform: rotateY(180deg); }
+.card .face.back {
+    transform: rotateY(180deg);
+    overflow: auto;
+}
+
+.content.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}

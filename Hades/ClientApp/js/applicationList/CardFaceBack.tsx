@@ -1,12 +1,17 @@
 ﻿import * as React from 'react'
-import { IJobApplications } from './ApplicationsData';
-import { IJobApplications as IJobApplications1 } from './ApplicationsData';
+import FlipLink from './FlipLink';
 
-export default class CardFaceBack extends React.Component<{ description: string }, any> {
-    public render() {
+export interface ICardFaceBackProps {
+    description: string;
+    onClicked(): void;
+}
+
+export default class CardFaceBack extends React.Component<ICardFaceBackProps, any> {
+    render() {
         return (
             <div className='face back'>
                 <div>{this.props.description}</div>
+                <FlipLink onFlip={this.props.onClicked} text='Back'/>
             </div>
         );
     }
