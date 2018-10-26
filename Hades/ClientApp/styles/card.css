@@ -25,7 +25,7 @@
     position: relative;
     transform-origin: center right;
     transform-style: preserve-3d;
-    transition: transform 3s;
+    transition: transform 2s;
     width: 100%;
 }
 
