@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 
-using Microsoft.AspNetCore.Mvc;
-
-namespace Hades.Features.JobApplication
+namespace Hades.Web.Features.JobApplication
 {
     [Route("api/[controller]")]
     public class JobApplicationApiController : Controller

@@ -1,4 +1,4 @@
-﻿namespace Hades.Features.JobApplication
+﻿namespace Hades.Web.Features.JobApplication
 {
     public class JobApplicationSummary
     {

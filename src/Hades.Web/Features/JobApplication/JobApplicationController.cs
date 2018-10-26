@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Hades.Features.JobApplication
+namespace Hades.Web.Features.JobApplication
 {
     public class JobApplicationController : Controller
     {

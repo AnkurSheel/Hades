@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
 
-namespace Hades.Infrastructure
+namespace Hades.Web.Infrastructure
 {
 	public class FeatureViewLocationExpander : IViewLocationExpander
 	{
