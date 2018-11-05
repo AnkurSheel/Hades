@@ -4,7 +4,7 @@ using Hades.Data.GraphQl;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hades.Web.GraphQl
+namespace Hades.Web.Features.GraphQl
 {
     [Route("api/[controller]")]
     public class GraphQlController : Controller

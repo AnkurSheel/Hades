@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="GraphQl\" />
         <Folder Include="wwwroot\" />
     </ItemGroup>
 
