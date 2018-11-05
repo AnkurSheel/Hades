@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using Hades.Web.Features.JobApplication;
 
@@ -50,5 +51,10 @@ namespace Hades.Web.GraphQl
         }
 
         public IList<JobApplicationSummary> JobApplicationSummaries { get; set; }
+
+        public JobApplicationSummary GetSummaryById(int id)
+        {
+            return JobApplicationSummaries.First(i => i.Id == id);
+        }
     }
 }

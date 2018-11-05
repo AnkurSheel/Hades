@@ -28,12 +28,13 @@ namespace Hades.Web.GraphQl
         public async Task<IActionResult> Index([FromBody] GraphQlRequest request)
         {
             var schema = new Schema { Query = new ApplicationSummaryQuery() };
-            var configure = new ExecutionOptions { Schema = schema, Query = request.Query };
 
             var result = await _executer.ExecuteAsync(doc =>
                                                       {
                                                           doc.Schema = schema;
                                                           doc.Query = request.Query;
+
+                                                          doc.Inputs = request.Variables.ToInputs();
                                                       })
                                         .ConfigureAwait(false);
 
