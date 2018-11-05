@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Hades.Web.GraphQl
+namespace Hades.Data.GraphQl
 {
     public class GraphQlRequest
     {

@@ -2,8 +2,7 @@
 
 using GraphiQl;
 
-using GraphQL;
-using GraphQL.Http;
+using Hades.Data;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +37,7 @@ namespace Hades.Web
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddFeatureFolders();
 
-            services.AddSingleton<IDocumentWriter, DocumentWriter>();
-            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+            services.AddHadesDataDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

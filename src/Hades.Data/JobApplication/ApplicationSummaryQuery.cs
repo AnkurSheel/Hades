@@ -1,6 +1,6 @@
 ﻿using GraphQL.Types;
 
-namespace Hades.Web.GraphQl
+namespace Hades.Data.JobApplication
 {
     public class ApplicationSummaryQuery : ObjectGraphType
     {

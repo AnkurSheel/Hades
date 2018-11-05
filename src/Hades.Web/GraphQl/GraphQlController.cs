@@ -1,45 +1,25 @@
 ﻿using System.Threading.Tasks;
 
-using GraphQL;
-using GraphQL.Http;
-using GraphQL.Types;
+using Hades.Data.GraphQl;
 
 using Microsoft.AspNetCore.Mvc;
-
-using Newtonsoft.Json.Linq;
 
 namespace Hades.Web.GraphQl
 {
     [Route("api/[controller]")]
-    [Produces("application/json")]
     public class GraphQlController : Controller
     {
-        private readonly IDocumentExecuter _executer;
+        private readonly IGraphQlService _graphQlService;
 
-        private readonly IDocumentWriter _writer;
-
-        public GraphQlController(IDocumentExecuter executer, IDocumentWriter writer)
+        public GraphQlController(IGraphQlService graphQlService)
         {
-            _executer = executer;
-            _writer = writer;
+            _graphQlService = graphQlService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Index([FromBody] GraphQlRequest request)
         {
-            var schema = new Schema { Query = new ApplicationSummaryQuery() };
-
-            var result = await _executer.ExecuteAsync(doc =>
-                                                      {
-                                                          doc.Schema = schema;
-                                                          doc.Query = request.Query;
-
-                                                          doc.Inputs = request.Variables.ToInputs();
-                                                      })
-                                        .ConfigureAwait(false);
-
-            var str = await _writer.WriteToStringAsync(result);
-            var json = JObject.Parse(str);
+            var json = await _graphQlService.GetData(request);
             return Ok(json);
         }
     }

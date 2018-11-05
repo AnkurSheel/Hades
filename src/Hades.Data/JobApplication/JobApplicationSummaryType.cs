@@ -1,8 +1,6 @@
 ﻿using GraphQL.Types;
 
-using Hades.Web.Features.JobApplication;
-
-namespace Hades.Web.GraphQl
+namespace Hades.Data.JobApplication
 {
     public class JobApplicationSummaryType : ObjectGraphType<JobApplicationSummary>
     {

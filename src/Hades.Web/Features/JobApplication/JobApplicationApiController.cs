@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hades.Data.JobApplication;
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hades.Web.Features.JobApplication
 {
