@@ -1,5 +1,10 @@
 ﻿using System.IO;
 
+using GraphiQl;
+
+using GraphQL;
+using GraphQL.Http;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +37,9 @@ namespace Hades.Web
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                     .AddFeatureFolders();
+
+            services.AddSingleton<IDocumentWriter, DocumentWriter>();
+            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,8 @@ namespace Hades.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseGraphiQl("/graphql", "/api/graphql");
 
             app.UseMvc();
         }
