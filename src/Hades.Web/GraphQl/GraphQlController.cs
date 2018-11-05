@@ -27,7 +27,7 @@ namespace Hades.Web.GraphQl
         [HttpPost]
         public async Task<IActionResult> Index([FromBody] GraphQlRequest request)
         {
-            var schema = new Schema { Query = new HelloWorldQuery() };
+            var schema = new Schema { Query = new ApplicationSummaryQuery() };
             var configure = new ExecutionOptions { Schema = schema, Query = request.Query };
 
             var result = await _executer.ExecuteAsync(doc =>
