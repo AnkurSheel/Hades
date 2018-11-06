@@ -1,4 +1,4 @@
-﻿namespace Hades.Data.JobApplication
+﻿namespace Hades.Core.JobApplication
 {
     public class JobApplicationSummary
     {

@@ -4,11 +4,11 @@ using GraphQL;
 using GraphQL.Http;
 using GraphQL.Types;
 
-using Hades.Data.JobApplication;
+using Hades.Core.JobApplication;
 
 using Newtonsoft.Json.Linq;
 
-namespace Hades.Data.GraphQl
+namespace Hades.Core.GraphQl
 {
     public class GraphQlService : IGraphQlService
     {

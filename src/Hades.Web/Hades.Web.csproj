@@ -18,12 +18,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="GraphQl\" />
         <Folder Include="wwwroot\" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Hades.Data\Hades.Data.csproj" />
+      <ProjectReference Include="..\Hades.Data\Hades.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

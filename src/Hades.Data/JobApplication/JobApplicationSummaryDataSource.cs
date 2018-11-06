@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Hades.Data.JobApplication
+namespace Hades.Core.JobApplication
 {
     public class JobApplicationSummaryDataSource
     {

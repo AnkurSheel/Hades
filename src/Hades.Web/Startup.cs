@@ -2,7 +2,7 @@
 
 using GraphiQl;
 
-using Hades.Data;
+using Hades.Core;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

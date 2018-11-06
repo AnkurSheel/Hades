@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-using Hades.Data.GraphQl;
+using Hades.Core.GraphQl;
 
 using Microsoft.AspNetCore.Mvc;
 

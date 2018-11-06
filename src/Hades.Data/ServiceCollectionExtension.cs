@@ -1,11 +1,11 @@
 ﻿using GraphQL;
 using GraphQL.Http;
 
-using Hades.Data.GraphQl;
+using Hades.Core.GraphQl;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Hades.Data
+namespace Hades.Core
 {
     public static class ServiceCollectionExtension
     {
