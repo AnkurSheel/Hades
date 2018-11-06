@@ -4,6 +4,8 @@ using Hades.Core.GraphQl;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Newtonsoft.Json.Linq;
+
 namespace Hades.Web.Features.GraphQl
 {
     [Route("api/[controller]")]
@@ -19,8 +21,8 @@ namespace Hades.Web.Features.GraphQl
         [HttpPost]
         public async Task<IActionResult> Index([FromBody] GraphQlRequest request)
         {
-            var json = await _graphQlService.GetData(request);
-            return Ok(json);
+            var result = await _graphQlService.ExecuteQuery<JObject>(request);
+            return Ok(result);
         }
     }
 }

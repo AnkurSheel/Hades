@@ -6,7 +6,7 @@ using GraphQL.Types;
 
 using Hades.Core.JobApplication;
 
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Hades.Core.GraphQl
 {
@@ -22,22 +22,22 @@ namespace Hades.Core.GraphQl
             _writer = writer;
         }
 
-        public async Task<JObject> GetData(GraphQlRequest request)
+        public async Task<T> ExecuteQuery<T>(GraphQlRequest request)
         {
             var schema = new Schema { Query = new ApplicationSummaryQuery() };
 
-            var result = await _executer.ExecuteAsync(doc =>
-                                                      {
-                                                          doc.Schema = schema;
-                                                          doc.Query = request.Query;
+            var queryResult = await _executer.ExecuteAsync(doc =>
+                                                           {
+                                                               doc.Schema = schema;
+                                                               doc.Query = request.Query;
 
-                                                          doc.Inputs = request.Variables.ToInputs();
-                                                      })
-                                        .ConfigureAwait(false);
+                                                               doc.Inputs = request.Variables.ToInputs();
+                                                           })
+                                             .ConfigureAwait(false);
 
-            var str = await _writer.WriteToStringAsync(result);
-            var json = JObject.Parse(str);
-            return json;
+            var str = await _writer.WriteToStringAsync(queryResult);
+            var result = JsonConvert.DeserializeObject<T>(str);
+            return result;
         }
     }
 }
