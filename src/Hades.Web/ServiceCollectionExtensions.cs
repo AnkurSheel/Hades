@@ -1,10 +1,10 @@
 ﻿using System;
 
-using Hades.Infrastructure;
+using Hades.Web.Infrastructure;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Hades
+namespace Hades.Web
 {
 	public static class ServiceCollectionExtensions
 	{
