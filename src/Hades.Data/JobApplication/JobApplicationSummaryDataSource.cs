@@ -1,58 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+
+using Hades.Core.Data;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Hades.Core.JobApplication
 {
-    public class JobApplicationSummaryDataSource
+    public class JobApplicationSummaryDataSource : IJobApplicationSummaryDataSource
     {
-        public JobApplicationSummaryDataSource()
+        private readonly IJobApplicationDbContext _jobApplicationDbContext;
+
+        public JobApplicationSummaryDataSource(IJobApplicationDbContext jobApplicationDbContext)
         {
-            JobApplicationSummaries = new List<JobApplicationSummary>
-            {
-                new JobApplicationSummary
-                {
-                    Id = 1,
-                    CompanyName = "Company 1",
-                    Date = "20/09/2018 Thursday",
-                    Status = "Applied",
-                    Description =
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incIdIdunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupIdatat non proIdent, sunt in culpa qui officia deserunt mollit anim Id est laborum."
-                },
-                new JobApplicationSummary
-                {
-                    Id = 2,
-                    CompanyName = "Company 2",
-                    Date = "20/09/2018 Thursday",
-                    Status = "Applied",
-                    Description =
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incIdIdunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupIdatat non proIdent, sunt in culpa qui officia deserunt mollit anim Id est laborum."
-                },
-                new JobApplicationSummary
-                {
-                    Id = 3,
-                    CompanyName = "Company 3",
-                    Date = "20/09/2018 Thursday",
-                    Status = "Applied",
-                    Description =
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incIdIdunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupIdatat non proIdent, sunt in culpa qui officia deserunt mollit anim Id est laborum."
-                },
-                new JobApplicationSummary
-                {
-                    Id = 4,
-                    CompanyName = "Company 4",
-                    Date = "20/09/2018 Thursday",
-                    Status = "Applied",
-                    Description =
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incIdIdunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupIdatat non proIdent, sunt in culpa qui officia deserunt mollit anim Id est laborum."
-                }
-            };
+            _jobApplicationDbContext = jobApplicationDbContext;
         }
 
-        public IList<JobApplicationSummary> JobApplicationSummaries { get; set; }
+        public IList<JobApplicationSummary> JobApplicationSummaries()
+        {
+            var data = _jobApplicationDbContext.JobApplications.Include(s => s.StatusHistory).ToList();
+            return data.Select(x => new JobApplicationSummary
+            {
+                Id = x.Id,
+                CompanyName = x.CompanyName,
+                Date = x.Date,
+                Description = x.Description,
+                Status = x.StatusHistory.First().Status.ToString()
+            }).ToList();
+        }
 
         public JobApplicationSummary GetSummaryById(int id)
         {
-            return JobApplicationSummaries.First(i => i.Id == id);
+            var data = _jobApplicationDbContext.JobApplications.First(i => i.Id == id);
+            return new JobApplicationSummary
+            {
+                Id = data.Id,
+                CompanyName = data.CompanyName,
+                Date = data.Date,
+                Description = data.Description,
+                Status = "Applied"
+            };
         }
     }
 }

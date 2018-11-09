@@ -16,15 +16,18 @@ namespace Hades.Core.GraphQl
 
         private readonly IDocumentWriter _writer;
 
-        public GraphQlService(IDocumentExecuter executer, IDocumentWriter writer)
+        private readonly ApplicationSummaryQuery _applicationSummaryQuery;
+
+        public GraphQlService(IDocumentExecuter executer, IDocumentWriter writer, ApplicationSummaryQuery applicationSummaryQuery)
         {
             _executer = executer;
             _writer = writer;
+            _applicationSummaryQuery = applicationSummaryQuery;
         }
 
         public async Task<T> ExecuteQuery<T>(GraphQlRequest request)
         {
-            var schema = new Schema { Query = new ApplicationSummaryQuery() };
+            var schema = new Schema { Query = _applicationSummaryQuery };
 
             var queryResult = await _executer.ExecuteAsync(doc =>
                                                            {
