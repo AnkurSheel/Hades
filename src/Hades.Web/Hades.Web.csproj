@@ -40,11 +40,11 @@
         <Exec WorkingDirectory="$(ClientAppFolder)" Command="yarn run build" />
     </Target>
 
-    <Target Name="BuildClientAssets" AfterTargets="ComputeFilesToPublish">
+    <!--<Target Name="BuildClientAssets" AfterTargets="ComputeFilesToPublish">
         <Exec WorkingDirectory="$(ClientAppFolder)" Command="yarn install" />
         <Exec WorkingDirectory="$(ClientAppFolder)" Command="yarn run prod" />
 
-        <!-- Include the newly-built files in the publish output -->
+        --><!-- Include the newly-built files in the publish output --><!--
         <ItemGroup>
             <DistFiles Include="$(ClientAppFolder)\wwwroot\dist\**" />
             <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
@@ -52,5 +52,5 @@
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             </ResolvedFileToPublish>
         </ItemGroup>
-    </Target>
+    </Target>-->
 </Project>
