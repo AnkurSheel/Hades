@@ -23,7 +23,7 @@ module.exports = (env = {}, argv = {}) => {
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: 'styles.css'
+                filename: '[name].css'
             })
         ],
         module: {
